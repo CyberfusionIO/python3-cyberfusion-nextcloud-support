@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="python3-cyberfusion-nextcloud-support",
-    version="1.1.1.2",
+    version="1.1.1.2.1",
     description="Library for NextCloud.",
     long_description=long_description,
     long_description_content_type="text/markdown",
