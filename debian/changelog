@@ -1,0 +1,81 @@
+python3-cyberfusion-nextcloud-support (1.1.1.1) unstable; urgency=low
+
+  - Publish to PyPI
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Wed, 21 Aug 2024 17:29:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.1.1) unstable; urgency=low
+
+  - Add CommandFailedError.streams
+  - Add command attribute to CommandFailedError
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 06 Jul 2024 17:02:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.1) unstable; urgency=low
+
+  - Abstract running commands to run_command
+  - Raise CommandFailedError on failure
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 05 Jul 2024 19:50:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.8.1) unstable; urgency=low
+
+  - Get only first part of version string
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 02 Jul 2024 16:07:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.8) unstable; urgency=low
+
+  - Cache available_version
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 02 Jul 2024 10:05:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.7) unstable; urgency=low
+
+  - Cache app list
+  - Set index 0 when specified
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 30 Jun 2024 14:18:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.6) unstable; urgency=low
+
+  - Set memory_limit to 512M for all commands
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 29 Jun 2024 22:29:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.5) unstable; urgency=low
+
+  - Let instance + app update return current and new version
+  - Add available_version to instance + app
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 27 Jun 2024 18:49:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.4) unstable; urgency=low
+
+  - Add app enable + disable
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 27 Jun 2024 17:37:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.3) unstable; urgency=low
+
+  - Add set and get system configs
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Wed, 26 Jun 2024 11:19:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.2) unstable; urgency=low
+
+  - Add app update + install from URL
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 24 Jun 2024 21:58:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0.1) unstable; urgency=low
+
+  - Add mail accounts
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 10 Jun 2024 18:44:00 +0200
+
+python3-cyberfusion-nextcloud-support (1.0) unstable; urgency=low
+
+  - Initial release
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 10 Jun 2024 10:58:00 +0200

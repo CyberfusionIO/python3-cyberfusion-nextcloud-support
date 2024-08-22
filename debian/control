@@ -1,0 +1,12 @@
+Source: python3-cyberfusion-nextcloud-support
+Section: misc
+Priority: optional
+Maintainer: William Edwards <wedwards@cyberfusion.nl>
+Build-Depends: python3-all, dh-python, debhelper (>= 10), python3-setuptools
+Standards-Version: 4.3.0
+
+Package: python3-cyberfusion-nextcloud-support
+Architecture: all
+Depends: python3, python3-cyberfusion-common (>= 2.10.3), php5.6-cli | php7.0-cli | php7.1-cli | php7.2-cli | php7.3-cli | php7.4-cli | php8.0-cli | php8.1-cli | php8.2-cli | php8.3-cli, ${misc:Depends}
+Description: Library for NextCloud.
+ Library for NextCloud.

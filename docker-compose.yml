@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mariadb:11.5
+    ports:
+      - "8196:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'a3e5a6EUsVQxmAQYcyEfSDSR'
