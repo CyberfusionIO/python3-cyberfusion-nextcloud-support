@@ -31,7 +31,7 @@ unit test and feature test:
     - adduser --disabled-password --gecos "" --uid 1000 --gid 1000 test_nextcloud
     - pip install --no-cache-dir -r requirements/test.txt
     - pip install .
-    - sudo -u test_nextcloud PYTHONPATH=$CI_PROJECT_DIR/src:/usr/lib/python3/dist-packages pytest -n 10 --dist loadgroup -vvv --cov-branch --cov=cyberfusion.NextCloudSupport --cov-config=.coveragerc --cov-fail-under=95 --junitxml=report-pytest.xml
+    - sudo -u test_nextcloud pytest -n 10 --dist loadgroup -vvv --cov-branch --cov=cyberfusion.NextCloudSupport --cov-config=.coveragerc --cov-fail-under=95 --junitxml=report-pytest.xml
       --database-username=root --database-password='dy9cAjyfhUpyaF7XuhzxzZ4a' --database-host=mariadb
   artifacts:
     reports:
