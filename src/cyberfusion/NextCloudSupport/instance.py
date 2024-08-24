@@ -55,9 +55,7 @@ class Instance:
         self.path = path
 
     @staticmethod
-    def download(
-        destination_path: str, zip_path: Optional[str] = None
-    ) -> None:
+    def download(destination_path: str, zip_path: Optional[str] = None) -> None:
         """Download NextCloud to path.
 
         If zip_path is not set, NextCloud is downloaded from their website.
@@ -139,7 +137,9 @@ class Instance:
 
         raise AppNotInstalledError
 
-    def get_system_config(self, name: str) -> Union[
+    def get_system_config(
+        self, name: str
+    ) -> Union[
         str,
         int,
         float,

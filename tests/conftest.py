@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import Generator
 
 import pytest
-from _pytest.config import Config
 from _pytest.config.argparsing import Parser
 from requests_mock import Mocker
 from sqlalchemy_utils import create_database, database_exists, drop_database
@@ -134,9 +133,7 @@ def instance_installed(
     database_username: str,
     database_password: str,
 ) -> Instance:
-    Instance.download(
-        workspace_directory, zip_path=nextcloud_zip_file_path_latest
-    )
+    Instance.download(workspace_directory, zip_path=nextcloud_zip_file_path_latest)
 
     Instance.install(
         workspace_directory,

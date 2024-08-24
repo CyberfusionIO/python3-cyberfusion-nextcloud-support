@@ -17,7 +17,7 @@ from tests._urls import URL_BOOKMARKS
 
 
 def test_instance_download_from_nextcloud(
-    workspace_directory: Generator[str, None, None]
+    workspace_directory: Generator[str, None, None],
 ) -> None:
     Instance.download(workspace_directory, zip_path=None)
 

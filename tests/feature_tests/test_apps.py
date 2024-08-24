@@ -25,9 +25,7 @@ def test_app_install_name(instance_installed: Instance) -> None:
 def test_app_is_disabled_disabled(
     instance_installed: Instance,
 ) -> None:
-    app = instance_installed.get_app(
-        "bruteforcesettings"
-    )  # Disabled by default
+    app = instance_installed.get_app("bruteforcesettings")  # Disabled by default
 
     assert app.is_enabled is False
 
@@ -43,9 +41,7 @@ def test_app_is_disabled_enabled(
 
 @pytest.mark.xdist_group(name="app")
 def test_app_enable(instance_installed: Instance) -> None:
-    app = instance_installed.get_app(
-        "bruteforcesettings"
-    )  # Disabled by default
+    app = instance_installed.get_app("bruteforcesettings")  # Disabled by default
 
     assert app.is_enabled is False
 
@@ -144,6 +140,4 @@ def test_app_remove(instance_installed: Instance) -> None:
 
     app.remove()
 
-    assert not any(
-        app.name == APP_NAME for app in instance_installed.installed_apps
-    )
+    assert not any(app.name == APP_NAME for app in instance_installed.installed_apps)
