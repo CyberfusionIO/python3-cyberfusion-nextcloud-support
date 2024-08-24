@@ -1,5 +1,3 @@
-import os
-
 from cyberfusion.NextCloudSupport._occ import run_command
 from cyberfusion.NextCloudSupport.instance import Instance
 
