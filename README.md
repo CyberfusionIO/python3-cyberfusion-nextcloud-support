@@ -10,12 +10,6 @@ Run the following command to install the package from PyPI:
 
     pip3 install python3-cyberfusion-nextcloud-support
 
-## Generic
-
-Run the following command to create a source distribution:
-
-    python3 setup.py sdist
-
 Next, install the following software:
 
 * PHP (see https://docs.nextcloud.com/server/latest/admin_manual/installation/php_configuration.html)
