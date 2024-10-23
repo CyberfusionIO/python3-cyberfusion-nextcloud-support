@@ -141,3 +141,16 @@ class App:
             return match.group(2)
 
         return None
+
+    def __str__(self) -> str:
+        """Get string representation."""
+        return (
+            self.name
+            + " ("
+            + self.version
+            + ", available: "
+            + str(self.available_version)
+            + ", enabled: "
+            + str(self.is_enabled)
+            + ")"
+        )
