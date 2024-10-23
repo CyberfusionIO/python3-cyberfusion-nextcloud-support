@@ -146,7 +146,11 @@ def instance_installed(
         database_type=DatabaseType.MYSQL,
     )
 
-    return Instance(workspace_directory)
+    instance = Instance(workspace_directory)
+
+    print(f"Created instance with NextCloud version {instance.version}")
+
+    return instance
 
 
 @pytest.fixture(scope="session")
