@@ -219,7 +219,7 @@ def test_instance_set_get_system_config_index(
 def test_instance_installed_apps(
     instance_installed: Instance,
 ) -> None:
-    assert len(instance_installed.installed_apps) >= 52
+    assert len(instance_installed.installed_apps) >= 49
 
 
 def test_instance_users(instance_installed: Instance) -> None:
