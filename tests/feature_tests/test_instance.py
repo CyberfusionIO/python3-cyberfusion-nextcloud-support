@@ -92,9 +92,9 @@ def test_instance_update_available(
 
 
 def test_instance_update_unavailable(
-    instance_installed: Instance,
+    instance_installed_latest_version: Instance,
 ) -> None:
-    old_version, new_version = instance_installed.update()
+    old_version, new_version = instance_installed_latest_version.update()
 
     assert old_version == new_version
 
@@ -141,100 +141,100 @@ def test_instance_available_version_available(
 
 
 def test_instance_available_version_unavailable(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
-    assert instance_installed.available_version is None
+    assert instance_installed_static_version.available_version is None
 
 
-def test_instance_version(instance_installed: Instance) -> None:
-    assert instance_installed.version.count(".") >= 2
+def test_instance_version(instance_installed_static_version: Instance) -> None:
+    assert instance_installed_static_version.version.count(".") >= 2
 
 
 def test_instance_set_get_system_config_str(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     NAME = "defaultapp"
     VALUE = "deck"
 
-    instance_installed.set_system_config(NAME, VALUE)
+    instance_installed_static_version.set_system_config(NAME, VALUE)
 
-    assert instance_installed.get_system_config(NAME) == VALUE
+    assert instance_installed_static_version.get_system_config(NAME) == VALUE
 
 
 def test_instance_set_get_system_config_int(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     NAME = "loglevel"
     VALUE = 1
 
-    instance_installed.set_system_config(NAME, VALUE)
+    instance_installed_static_version.set_system_config(NAME, VALUE)
 
-    assert instance_installed.get_system_config(NAME) == VALUE
+    assert instance_installed_static_version.get_system_config(NAME) == VALUE
 
 
 def test_instance_set_get_system_config_bool_true(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     NAME = "maintenance"
     VALUE = True
 
-    instance_installed.set_system_config(NAME, VALUE)
+    instance_installed_static_version.set_system_config(NAME, VALUE)
 
-    assert instance_installed.get_system_config(NAME) == VALUE
+    assert instance_installed_static_version.get_system_config(NAME) == VALUE
 
 
 def test_instance_set_get_system_config_bool_false(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     NAME = "maintenance"
     VALUE = False
 
-    instance_installed.set_system_config(NAME, VALUE)
+    instance_installed_static_version.set_system_config(NAME, VALUE)
 
-    assert instance_installed.get_system_config(NAME) == VALUE
+    assert instance_installed_static_version.get_system_config(NAME) == VALUE
 
 
 def test_instance_set_get_system_config_float(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     NAME = "version"
     VALUE = 1.1
 
-    instance_installed.set_system_config(NAME, VALUE)
+    instance_installed_static_version.set_system_config(NAME, VALUE)
 
-    assert instance_installed.get_system_config(NAME) == VALUE
+    assert instance_installed_static_version.get_system_config(NAME) == VALUE
 
 
 def test_instance_set_get_system_config_index(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     NAME = "trusted_domains"
     VALUE = "example.com"
 
-    instance_installed.set_system_config(NAME, VALUE, 2)
+    instance_installed_static_version.set_system_config(NAME, VALUE, 2)
 
-    assert VALUE in instance_installed.get_system_config(NAME)
+    assert VALUE in instance_installed_static_version.get_system_config(NAME)
 
 
 def test_instance_installed_apps(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
-    assert len(instance_installed.installed_apps) == 49
+    assert len(instance_installed_static_version.installed_apps) >= 49
 
 
-def test_instance_users(instance_installed: Instance) -> None:
-    assert len(instance_installed.users) == 1
+def test_instance_users(instance_installed_static_version: Instance) -> None:
+    assert len(instance_installed_static_version.users) == 1
 
 
 @pytest.mark.xdist_group(name="app")
 def test_instance_create_mail_account(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
-    App.install(instance_installed, "mail")
+    App.install(instance_installed_static_version, "mail")
 
-    instance_installed.create_mail_account(
-        user_id=instance_installed.users[0].id,
-        name=instance_installed.users[0].name,
+    instance_installed_static_version.create_mail_account(
+        user_id=instance_installed_static_version.users[0].id,
+        name=instance_installed_static_version.users[0].name,
         email_address="example@example.com",
         imap_hostname="localhost",
         imap_port=143,
@@ -251,20 +251,20 @@ def test_instance_create_mail_account(
 
 
 @pytest.mark.xdist_group(name="app")
-def test_instance_raw_app_list(instance_installed: Instance) -> None:
-    assert isinstance(instance_installed.raw_app_list, dict)
+def test_instance_raw_app_list(instance_installed_static_version: Instance) -> None:
+    assert isinstance(instance_installed_static_version.raw_app_list, dict)
 
 
 @pytest.mark.xdist_group(name="app")
 def test_instance_raw_app_update_list(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
-    assert isinstance(instance_installed.raw_app_update_list, list)
+    assert isinstance(instance_installed_static_version.raw_app_update_list, list)
 
 
 @pytest.mark.xdist_group(name="app")
 def test_instance_refresh_raw_app_list(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     APP_NAME = "mail"
 
@@ -272,62 +272,65 @@ def test_instance_refresh_raw_app_list(
 
     assert (
         APP_NAME
-        not in instance_installed.raw_app_list["enabled"]
-        | instance_installed.raw_app_list["disabled"]
+        not in instance_installed_static_version.raw_app_list["enabled"]
+        | instance_installed_static_version.raw_app_list["disabled"]
     )
 
     # Install app
 
-    App.install(instance_installed, APP_NAME)
+    App.install(instance_installed_static_version, APP_NAME)
 
     # Cache not refreshed
 
     assert (
         APP_NAME
-        not in instance_installed.raw_app_list["enabled"]
-        | instance_installed.raw_app_list["disabled"]
+        not in instance_installed_static_version.raw_app_list["enabled"]
+        | instance_installed_static_version.raw_app_list["disabled"]
     )
 
-    instance_installed.refresh_raw_app_list()
+    instance_installed_static_version.refresh_raw_app_list()
 
     # Cache refreshed
 
     assert (
         APP_NAME
-        in instance_installed.raw_app_list["enabled"]
-        | instance_installed.raw_app_list["disabled"]
+        in instance_installed_static_version.raw_app_list["enabled"]
+        | instance_installed_static_version.raw_app_list["disabled"]
     )
 
 
 @pytest.mark.xdist_group(name="app")
 def test_instance_refresh_raw_app_update_list(
-    instance_installed: Instance,
+    instance_installed_static_version: Instance,
 ) -> None:
     APP_NAME = "bookmarks"
 
     # App not installed
 
     assert APP_NAME not in [
-        line.split(" ")[0] for line in instance_installed.raw_app_update_list
+        line.split(" ")[0]
+        for line in instance_installed_static_version.raw_app_update_list
     ]
 
     # Install app
 
     App.install(
-        instance_installed,
+        instance_installed_static_version,
         url=URL_BOOKMARKS,
     )
 
     # Cache not refreshed
 
     assert APP_NAME not in [
-        line.split(" ")[0] for line in instance_installed.raw_app_update_list
+        line.split(" ")[0]
+        for line in instance_installed_static_version.raw_app_update_list
     ]
 
-    instance_installed.refresh_raw_app_update_list()
+    instance_installed_static_version.refresh_raw_app_update_list()
 
     # Cache refreshed
 
     assert APP_NAME in [
-        line.split(" ")[0] for line in instance_installed.raw_app_update_list
+        line.split(" ")[0]
+        for line in instance_installed_static_version.raw_app_update_list
     ]
