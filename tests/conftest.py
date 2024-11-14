@@ -10,7 +10,6 @@ from sqlalchemy_utils import create_database, database_exists, drop_database
 
 from cyberfusion.Common import download_from_url, generate_random_string
 from cyberfusion.NextCloudSupport.instance import (
-    URL_ZIP_NEXTCLOUD,
     DatabaseType,
     Instance,
 )
@@ -128,12 +127,12 @@ def app_download_mocks(
 def instance_installed(
     workspace_directory: str,
     database_name: str,
-    nextcloud_zip_file_path_latest: Generator[str, None, None],
+    nextcloud_2900_archive: str,
     database_host: str,
     database_username: str,
     database_password: str,
 ) -> Instance:
-    Instance.download(workspace_directory, zip_path=nextcloud_zip_file_path_latest)
+    Instance.download(workspace_directory, zip_path=nextcloud_2900_archive)
 
     Instance.install(
         workspace_directory,
@@ -151,16 +150,6 @@ def instance_installed(
     print(f"Created instance with NextCloud version {instance.version}")
 
     return instance
-
-
-@pytest.fixture(scope="session")
-def nextcloud_zip_file_path_latest() -> Generator[str, None, None]:
-    """Download latest NextCloud version."""
-    path = download_from_url(URL_ZIP_NEXTCLOUD)
-
-    yield path
-
-    os.unlink(path)
 
 
 @pytest.fixture
