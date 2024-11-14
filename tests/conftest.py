@@ -12,6 +12,7 @@ from cyberfusion.Common import download_from_url, generate_random_string
 from cyberfusion.NextCloudSupport.instance import (
     DatabaseType,
     Instance,
+    URL_ZIP_NEXTCLOUD,
 )
 from tests._urls import (
     URL_BOOKMARKS,
@@ -123,16 +124,15 @@ def app_download_mocks(
     )
 
 
-@pytest.fixture
-def instance_installed(
+def create_installation(
     workspace_directory: str,
     database_name: str,
-    nextcloud_2900_archive: str,
+    zip_path: str,
     database_host: str,
     database_username: str,
     database_password: str,
 ) -> Instance:
-    Instance.download(workspace_directory, zip_path=nextcloud_2900_archive)
+    Instance.download(workspace_directory, zip_path=zip_path)
 
     Instance.install(
         workspace_directory,
@@ -150,6 +150,54 @@ def instance_installed(
     print(f"Created instance with NextCloud version {instance.version}")
 
     return instance
+
+
+@pytest.fixture
+def instance_installed_static_version(
+    workspace_directory: str,
+    database_name: str,
+    nextcloud_2900_archive: str,
+    database_host: str,
+    database_username: str,
+    database_password: str,
+) -> Instance:
+    return create_installation(
+        workspace_directory,
+        database_name,
+        nextcloud_2900_archive,
+        database_host,
+        database_username,
+        database_password,
+    )
+
+
+@pytest.fixture
+def instance_installed_latest_version(
+    workspace_directory: str,
+    database_name: str,
+    nextcloud_zip_file_path_latest: Generator[str, None, None],
+    database_host: str,
+    database_username: str,
+    database_password: str,
+) -> Instance:
+    return create_installation(
+        workspace_directory,
+        database_name,
+        nextcloud_zip_file_path_latest,
+        database_host,
+        database_username,
+        database_password,
+    )
+
+
+@pytest.fixture(scope="session")
+def nextcloud_zip_file_path_latest() -> Generator[str, None, None]:
+    """Download latest NextCloud version."""
+    path = download_from_url(URL_ZIP_NEXTCLOUD)
+
+    yield path
+
+    os.unlink(path)
 
 
 @pytest.fixture
