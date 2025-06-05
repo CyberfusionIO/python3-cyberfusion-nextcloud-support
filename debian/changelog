@@ -1,3 +1,9 @@
+python3-cyberfusion-nextcloud-support (1.1.3) unstable; urgency=low
+
+  - Let php8.4-cli satisfy Depends
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 05 Jun 2025 18:09:00 +0200
+
 python3-cyberfusion-nextcloud-support (1.1.1.2.2) unstable; urgency=low
 
   - Remove deprecated setup.py in favour of pyproject.toml
