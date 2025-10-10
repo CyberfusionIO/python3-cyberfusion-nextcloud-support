@@ -5,5 +5,5 @@ pytest-cov==6.3.0
 pytest-mock==3.15.1
 pytest-xdist==3.8.0
 requests-mock==1.12.1
-SQLAlchemy==2.0.43
+SQLAlchemy==2.0.44
 SQLAlchemy-Utils==0.42.0
