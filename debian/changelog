@@ -1,3 +1,9 @@
+python3-cyberfusion-nextcloud-support (1.2.1) unstable; urgency=low
+
+  - Let php8.5-common satisfy Depends
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 17 Jan 2026 16:01:00 +0200
+
 python3-cyberfusion-nextcloud-support (1.2) unstable; urgency=low
 
   - Update to Trixie
