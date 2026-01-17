@@ -7,6 +7,6 @@ Standards-Version: 4.3.0
 
 Package: python3-cyberfusion-nextcloud-support
 Architecture: all
-Depends: python3, php5.6-cli | php7.0-cli | php7.1-cli | php7.2-cli | php7.3-cli | php7.4-cli | php8.0-cli | php8.1-cli | php8.2-cli | php8.3-cli | php8.4-cli, ${python3:Depends}, ${misc:Depends}
+Depends: python3, php5.6-cli | php7.0-cli | php7.1-cli | php7.2-cli | php7.3-cli | php7.4-cli | php8.0-cli | php8.1-cli | php8.2-cli | php8.3-cli | php8.4-cli | php8.5-cli, ${python3:Depends}, ${misc:Depends}
 Description: Library for NextCloud.
  Library for NextCloud.
